@@ -14,10 +14,10 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Figueredo';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,25 +33,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('all.css') ?>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->Html->script(['jquery-3.4.1.min.js','bootstrap.js', 'bootstrap.bundle.js']);?>
-    <?= $this->fetch('script') ?>
+    <?php
+    echo $this->fetch('meta');
+    echo $this->fetch('css');
+    $this->Html->script(['jquery-3.4.1.min.js', 'bootstrap.js', 'bootstrap.bundle.js']);
+    echo $this->fetch('script');
+    ?>
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="/">Figueredo Construções</a>
-        </div>
 
-    </nav>
-    <main class="main">
-        <div class="container">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
-    </main>
-    <footer>
-    </footer>
+    <div class="container">
+    <!-- Here's where I want my views to be displayed -->
+    <?= $this->Flash->render() ?>
+    <?= $this->fetch('content') ?>
+    </div>
+<!-- Add a footer to each displayed page -->
+<div id="footer"></div>
+
 </body>
 </html>
