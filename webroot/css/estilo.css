@@ -1,0 +1,46 @@
+#barra{
+    height: 60px;
+    background: rgb(201,222,150); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(201,222,150,1) 0%, rgba(138,182,107,1) 44%, rgba(57,130,53,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', endColorstr='#398235',GradientType=0 ); /* IE6-9 */
+}
+
+#lateral{
+    height: 100%;
+    width: 300px;
+    position: absolute;
+    background-color: #E8E8E8;
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    color: #0b2e13;
+}
+ul li{
+    list-style: none;
+    display: block;
+    background-color: white;
+    border: 2px solid #E8E8E8;
+    height: 40px;
+    font-size: 13pt;
+}
+
+ul li a{
+    display: block;
+}
+
+ul li a:hover{
+    text-decoration: none;
+    color: #0b2e13;
+}
+
+ul li:hover{
+    background-color: #95999c;
+}
+
+a:link{
+    color: #0b2e13;
+}

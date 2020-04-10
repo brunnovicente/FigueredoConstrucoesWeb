@@ -32,7 +32,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('all.css') ?>
-    <?= $this->Html->css('estilo.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -40,23 +39,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav id="barra">
+    <nav class="top-nav">
         <div class="top-nav-title">
             <a href="/">Figueredo Construções</a>
         </div>
     </nav>
-
-    <div id="lateral">
-
-        <ul>
-            <li><a href=""><i class="fas fa-shopping-cart"></i> Vendas</a></li>
-            <li><a href=""><i class="fas fa-shopping-cart"></i> Clientes</a></li>
-            <li><a href=""><i class="fas fa-shopping-cart"></i> Estoque</a></li>
-            <li><a href="/users/logout"><i class="fas fa-power-off"></i> Sair</a></li>
-        </ul>
-
-    </div>
-
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
