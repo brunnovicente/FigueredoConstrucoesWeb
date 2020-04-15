@@ -3,7 +3,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Cliente[]|\Cake\Collection\CollectionInterface $clientes
  */
-
+    $this->Paginator->setTemplates([
+        'prevActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+        'prevDisabled' => '<li class="page-item disabled"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+        'nextActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+        'nextDisabled' => '<li class="page-item disabled"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+        'number' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+        'current' => '<li class="page-item active"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+    ]);
 ?>
 <div class="container-fluid">
 
@@ -54,27 +61,11 @@
             </tbody>
         </table>
     </div>
-    <br>
-    <nav>
+    <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+            <?= $this->Paginator->prev('< ' . ('Anterior')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(('Próxima') . ' >') ?>
         </ul>
     </nav>
-
-    <!--
-    <div class="pagination">
-        <ul class="pagination">
-            <?//= $this->Paginator->first('<< ' . __('first')) ?>
-            <?//= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?//= $this->Paginator->numbers() ?>
-            <?//= $this->Paginator->next(__('next') . ' >') ?>
-            <?//= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?//= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
-    -->
 </div>
