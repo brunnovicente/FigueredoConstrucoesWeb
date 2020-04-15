@@ -48,13 +48,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </nav>
 
     <div id="lateral">
-        
+
         <ul id="accordion" class="accordion">
             <li>
                 <div class="link"><i class="fa fa-shopping-cart"></i>Vendas<i class="fa fa-chevron-down"></i></div>
                 <ul class="submenu">
-                    <li><a href="#">Operação de Venda</a></li>
-                    <li><a href="#">Consulta de Vendas</a></li>
+                    <li><a href="/vendas/add">Operação de Venda</a></li>
+                    <li><a href="/vendas/index">Consulta de Vendas</a></li>
                 </ul>
             </li>
             <li>
@@ -69,7 +69,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <ul class="submenu">
                     <li><a href="/fornecedores/index">Gerência de Fornecedores</a></li>
                     <li><a href="/produtos/index">Gerência de Produtos</a></li>
-                    <li><a href="#">Entrada de Produtos</a></li>
+                    <li><a href="/entradas/index">Entrada de Produtos</a></li>
                 </ul>
             </li>
             <li>

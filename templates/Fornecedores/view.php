@@ -29,6 +29,10 @@
                 <td><?= h($fornecedore->cnpj) ?></td>
             </tr>
             <tr>
+                <th><?= __('ENDEREÇO') ?></th>
+                <td><?= h($fornecedore->endereco) ?></td>
+            </tr>
+            <tr>
                 <th><?= __('TELEFONE 1') ?></th>
                 <td><?= h($fornecedore->telefone1) ?></td>
             </tr>

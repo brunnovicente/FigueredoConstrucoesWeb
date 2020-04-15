@@ -41,7 +41,7 @@ class ProdutosTable extends Table
         parent::initialize($config);
 
         $this->setTable('produtos');
-        $this->setDisplayField('id');
+        $this->setDisplayField('descricao');
         $this->setPrimaryKey('id');
 
         $this->hasMany('Entradas', [

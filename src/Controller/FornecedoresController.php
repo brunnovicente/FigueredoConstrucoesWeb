@@ -50,6 +50,7 @@ class FornecedoresController extends AppController
         $fornecedore = $this->Fornecedores->newEmptyEntity();
         if ($this->request->is('post')) {
             $fornecedore = $this->Fornecedores->patchEntity($fornecedore, $this->request->getData());
+            $fornecedore->set('status', 1);
             if ($this->Fornecedores->save($fornecedore)) {
                 $this->Flash->success(__('The fornecedore has been saved.'));
 
