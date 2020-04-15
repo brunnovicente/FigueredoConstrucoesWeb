@@ -50,6 +50,7 @@ class ProdutosController extends AppController
         $produto = $this->Produtos->newEmptyEntity();
         if ($this->request->is('post')) {
             $produto = $this->Produtos->patchEntity($produto, $this->request->getData());
+            $produto->set('status', 1);
             if ($this->Produtos->save($produto)) {
                 $this->Flash->success(__('The produto has been saved.'));
 

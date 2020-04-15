@@ -67,17 +67,16 @@ class ProdutosTable extends Table
         $validator
             ->scalar('codigoBarra')
             ->maxLength('codigoBarra', 100)
-            ->allowEmptyString('codigoBarra')
+            ->notEmptyString('codigoBarra', 'O código de barras do produto é obrigatório!')
             ->add('codigoBarra', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('descricao')
-            ->maxLength('descricao', 256)
-            ->allowEmptyString('descricao');
+            ->notEmptyString('descricao', 'A descrição do produto é obrigatória!');
 
         $validator
             ->decimal('preco')
-            ->allowEmptyString('preco');
+            ->notEmptyString('preco','O preço é obrigatório!');
 
         $validator
             ->decimal('estoque')
@@ -90,17 +89,6 @@ class ProdutosTable extends Table
         $validator
             ->integer('status')
             ->allowEmptyString('status');
-
-        $validator
-            ->scalar('codigobarras')
-            ->maxLength('codigobarras', 255)
-            ->allowEmptyString('codigobarras')
-            ->add('codigobarras', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        $validator
-            ->scalar('marca')
-            ->maxLength('marca', 255)
-            ->allowEmptyString('marca');
 
         return $validator;
     }

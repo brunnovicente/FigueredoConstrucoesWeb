@@ -26,6 +26,12 @@ $this->Html->script(['jquery.mask.js'], ['block' => true]);
         </div>
 
         <div class="row">
+            <div class="col-12 form-group">
+                <?php echo $this->Form->control('endereco',['class'=>'form-control','label'=>'ENDEREÇO', 'id'=>'endereco'])?>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-3 form-group">
                 <?php echo $this->Form->control('telefone1',['class'=>'form-control','label'=>'TELEFONE 1', 'id'=>'telefone1'])?>
             </div>

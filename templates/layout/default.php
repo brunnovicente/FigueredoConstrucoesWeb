@@ -36,7 +36,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->Html->script(['jquery-3.4.1.min.js','bootstrap.js', 'bootstrap.bundle.js']);?>
+    <?= $this->Html->script(['jquery-3.4.1.min.js','bootstrap.js', 'bootstrap.bundle.js','menu.js']);?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
@@ -44,25 +44,45 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-title">
             <a href="/">Figueredo Construções</a>
         </div>
+
     </nav>
 
     <div id="lateral">
-
-        <ul>
-            <li><a href=""><i class="fas fa-shopping-cart"></i> Vendas</a></li>
-            <li><a href=""><i class="fas fa-shopping-cart"></i> Clientes</a></li>
-            <li><a href=""><i class="fas fa-shopping-cart"></i> Estoque</a></li>
-            <li><a href="/users/logout"><i class="fas fa-power-off"></i> Sair</a></li>
+        
+        <ul id="accordion" class="accordion">
+            <li>
+                <div class="link"><i class="fa fa-shopping-cart"></i>Vendas<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li><a href="#">Operação de Venda</a></li>
+                    <li><a href="#">Consulta de Vendas</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><i class="fa fa-user-tie"></i>Clientes<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li><a href="/clientes/add">Cadastrar Cliente</a></li>
+                    <li><a href="/clientes/index">Consulta de Clientes</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><i class="fa fa-paint-roller"></i>Estoque<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li><a href="/fornecedores/index">Gerência de Fornecedores</a></li>
+                    <li><a href="/produtos/index">Gerência de Produtos</a></li>
+                    <li><a href="#">Entrada de Produtos</a></li>
+                </ul>
+            </li>
+            <li>
+                </i><a class="link" href="/users/logout"><i class="fas fa-power-off"> </i> Sair</a>
+            </li>
         </ul>
 
     </div>
 
-    <main class="main">
-        <div class="container">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
-    </main>
+    <div id="conteudo">
+          <?= $this->Flash->render() ?>
+          <?= $this->fetch('content') ?>
+    </div>
     <footer>
     </footer>
 </body>

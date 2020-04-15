@@ -5,7 +5,8 @@
  */
 
 ?>
-<div class="container">
+<div class="container-fluid">
+
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Gerência de Clientes') ?></h3></a>
         <form class="form-inline">
@@ -22,6 +23,7 @@
             <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-secondary btn-sm m-1 fas fa-plus']) ?>
         </li>
     </ul>
+
     <div class="shadow">
 
         <table class="table table-hover">
