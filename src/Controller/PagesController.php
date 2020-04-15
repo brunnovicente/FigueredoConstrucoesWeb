@@ -20,6 +20,7 @@ use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
+use Cake\ORM\TableRegistry;
 use Cake\View\Exception\MissingTemplateException;
 
 /**
@@ -31,6 +32,12 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
     /**
      * Displays a view
      *
@@ -71,5 +78,38 @@ class PagesController extends AppController
         }
 
         return $this->render();
+    }
+
+    /**
+     * Action da página do autocomplete
+     */
+    public function autocomplete() {
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            foreach ($data['item'] as $item) {
+                // TODO: criar objetos itens
+                echo "Id: ".$item['id']."|Quant: ".$item['quantidade']."<br>";
+            }
+        }
+    }
+
+    /**
+     * Action do ajax do autocomplete
+     */
+    public function produtosAjax() {
+        $this->viewBuilder()->setLayout('ajax');
+        $query = TableRegistry::getTableLocator()->get('produtos')->find('all');
+        if ($this->request->is('get')) {
+            if(!empty($this->request->getQuery('q'))) {
+                $query->where(['OR' => [
+                    ['codigoBarra LIKE' => '%'.$this->request->getQuery('q').'%'],
+                    ['descricao LIKE' => '%'.$this->request->getQuery('q').'%']
+                ]]);
+                $produtos = $this->paginate($query);
+                $this->set(compact('produtos'));
+                $this->viewBuilder()->setOption('serialize', ['produtos']);
+            }
+
+        }
     }
 }
