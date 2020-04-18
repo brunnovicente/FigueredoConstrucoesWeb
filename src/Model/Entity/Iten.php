@@ -33,7 +33,5 @@ class Iten extends Entity
         'total' => true,
         'produto_id' => true,
         'venda_id' => true,
-        'produto' => true,
-        'venda' => true,
     ];
 }

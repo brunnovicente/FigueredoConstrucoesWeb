@@ -4,11 +4,16 @@
  * @var \App\Model\Entity\Produto $produto
  */
 ?>
-<div class="container">
+
+<div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Editar de Produto') ?></h3></a>
         <?= $this->Html->link(__(' Voltar'), ['action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm m-1 fas fa-angle-left']) ?>
     </nav>
+</div>
+<br>
+<div class="container">
+
     <div class="p-3 shadow">
         <?= $this->Form->create($produto) ?>
 

@@ -4,7 +4,8 @@
  * @var \App\Model\Entity\Produto $produto
  */
 ?>
-<div class="container">
+
+<div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Dados do Produto') ?></h3></a>
         <ul class="nav justify-content-end">
@@ -19,6 +20,10 @@
             </li>
         </ul>
     </nav>
+</div>
+<br>
+<div class="container-fluid">
+
     <div class="p-3 shadow">
 
         <h3 class="text-center"><?= h($produto->descricao) ?></h3>

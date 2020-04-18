@@ -110,13 +110,12 @@ $UF = array(
 </head>
 
 <div class="container-fluid">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light m-1">
         <a class="navbar-brand"><h3><?= __('Cadastro de Cliente') ?></h3></a>
         <?= $this->Html->link(__(' Voltar'), ['action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm fas fa-angle-left']) ?>
     </nav>
 </div>
 <br>
-<div class="container">
 
     <div class="container shadow">
         <?= $this->Form->create($cliente) ?>
@@ -173,7 +172,6 @@ $UF = array(
         <br>
         <?= $this->Form->end() ?>
     </div>
-</div>
 
 <?= $this->Html->scriptBlock('
 $(document).ready( function() {

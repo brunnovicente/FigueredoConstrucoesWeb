@@ -19,9 +19,13 @@ class ClientesController extends AppController
      */
     public function index()
     {
-        $clientes = $this->paginate($this->Clientes);
+        $user = $this->Auth->user('id');
 
+        $clientes = $this->paginate($this->Clientes, ['limit' => 10]);
+
+        $this->set('user', $user);
         $this->set(compact('clientes'));
+
     }
 
     /**

@@ -4,8 +4,9 @@
  * @var \App\Model\Entity\Fornecedore $fornecedore
  */
 ?>
-<div class="container">
-    <nav class="navbar navbar-light bg-light">
+
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light m-1">
         <a class="navbar-brand"><h3><?= __('Dados do Fornecedor') ?></h3></a>
 
         <ul class="nav justify-content-end">
@@ -20,6 +21,10 @@
             </li>
         </ul>
     </nav>
+</div>
+<br>
+<div class="container-fluid">
+
     <div class="p-3 shadow">
 
         <h3 class="text-center"><?= h($fornecedore->razao) ?></h3>

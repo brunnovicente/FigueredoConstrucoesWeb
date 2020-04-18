@@ -13,6 +13,7 @@
     ]);
 
 ?>
+
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Gerência de Fornecedores') ?></h3></a>
@@ -21,13 +22,13 @@
             <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" type="submit"></button>
         </form>
     </nav>
+</div>
+
+<div class="container-fluid">
 
     <ul class="nav">
         <li class="nav-item">
-            <?= $this->Html->link(__(' Início'), ['controller'=>'Welcome','action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm m-1 fas fa-home']) ?>
-        </li>
-        <li class="nav-item">
-            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-secondary btn-sm m-1 fas fa-plus']) ?>
+            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
         </li>
     </ul>
     <div class="shadow">
@@ -49,8 +50,8 @@
                     <td><?= h($fornecedore->telefone1) ?></td>
                     <td><?= h($fornecedore->telefone2) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__(''), ['action' => 'edit', $fornecedore->id], ['class'=>'btn btn-primary btn-sm fas fa-edit']) ?>
-                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $fornecedore->id], ['class'=>'btn btn-danger btn-sm fas fa-trash-alt','confirm' => __('Tem certeza que deseja excluir {0}?', $fornecedore->razao)]) ?>
+                        <?= $this->Html->link(__(''), ['action' => 'edit', $fornecedore->id], ['class'=>'btn btn-outline-primary btn-sm fas fa-edit']) ?>
+                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $fornecedore->id], ['class'=>'btn btn-outline-danger btn-sm fas fa-trash-alt','confirm' => __('Tem certeza que deseja excluir {0}?', $fornecedore->razao)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

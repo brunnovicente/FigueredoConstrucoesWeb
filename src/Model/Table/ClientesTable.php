@@ -63,12 +63,12 @@ class ClientesTable extends Table
         $validator
             ->scalar('nome')
             ->maxLength('nome', 100)
-            ->allowEmptyString('nome');
+            ->notEmptyString('nome', 'Digite o NOME do Cliente.');
 
         $validator
             ->scalar('cpf')
             ->maxLength('cpf', 20)
-            ->allowEmptyString('cpf');
+            ->notEmptyString('cpf', 'Digite o CPF do Cliente');
 
         $validator
             ->scalar('cep')

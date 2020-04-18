@@ -4,11 +4,16 @@
  * @var \App\Model\Entity\Fornecedore $fornecedore
  */
 ?>
-<div class="container">
-    <nav class="navbar navbar-light bg-light">
+
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light m-1">
         <a class="navbar-brand"><h3><?= __('Editar Fornecedor') ?></h3></a>
         <?= $this->Html->link(__(' Voltar'), ['action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm fas fa-angle-left']) ?>
     </nav>
+</div>
+<br>
+<div class="container">
+
     <div class="p-3 shadow">
         <?= $this->Form->create($fornecedore) ?>
         <div class="row">
@@ -17,6 +22,12 @@
             </div>
             <div class="col-8 form-group">
                 <?php echo $this->Form->control('razao',['class'=>'form-control','label'=>'RAZÃO'])?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 form-group">
+                <?php echo $this->Form->control('endereco',['class'=>'form-control','label'=>'ENDEREÇO', 'id'=>'endereco'])?>
             </div>
         </div>
 

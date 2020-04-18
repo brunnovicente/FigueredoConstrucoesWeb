@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Figueredo Construções';
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,16 +40,41 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
+    <!--
     <nav id="barra">
         <div class="top-nav-title">
             <a href="/">Figueredo Construções</a>
         </div>
 
-    </nav>
+    </nav> -->
 
+    <div class="navbar navbar-expand-lg" id="barra">
+        <div class="navbar-nav mr-auto imagem">
+            <a class="nav-link" href="/welcome/index" ><img width="135" src="/img/logo.png"><span class="sr-only mx-1">(current)</span></a>
+        </div>
+
+        <div class="dropdown float-right">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/welcome/index">Meus Dados</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/users/index">Gerenciar Usuários</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/users/logout">Sair</a>
+            </div>
+        </div>
+
+    </div>
+    <div>
+
+    </div>
     <div id="lateral">
-
         <ul id="accordion" class="accordion">
+            <li>
+                </i><a class="link" href="/welcome/index"><i class="fas fa-home"> </i> Início</a>
+            </li>
             <li>
                 <div class="link"><i class="fa fa-shopping-cart"></i>Vendas<i class="fa fa-chevron-down"></i></div>
                 <ul class="submenu">
@@ -70,6 +95,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <li><a href="/fornecedores/index">Gerência de Fornecedores</a></li>
                     <li><a href="/produtos/index">Gerência de Produtos</a></li>
                     <li><a href="/entradas/index">Entrada de Produtos</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><i class="fa fa-chart-line"></i>Relatórios<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li><a href="/welcome">Gerência de Produtos Mínimos</a></li>
+                    <li><a href="/welcome">Relatório de Vendas</a></li>
+                    <li><a href="/welcome">Relatório de Entradas de Produtos</a></li>
                 </ul>
             </li>
             <li>

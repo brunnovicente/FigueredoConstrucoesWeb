@@ -14,6 +14,7 @@
     ]);
 
 ?>
+
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Gerência de Produtos') ?></h3></a>
@@ -22,13 +23,12 @@
             <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" type="submit"></button>
         </form>
     </nav>
+</div>
 
+<div class="container-fluid">
     <ul class="nav">
         <li class="nav-item">
-            <?= $this->Html->link(__(' Início'), ['controller'=>'Welcome','action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm m-1 fas fa-home']) ?>
-        </li>
-        <li class="nav-item">
-            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-secondary btn-sm m-1 fas fa-plus']) ?>
+            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
         </li>
     </ul>
     <div class="shadow">
@@ -50,8 +50,8 @@
                     <td><?= $this->Number->format($produto->preco, ['place'=> 2, 'before'=>'R$ ', 'locale'=>'fr_BR']) ?></td>
                     <td><?= $this->Number->format($produto->estoque) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__(''), ['action' => 'edit', $produto->id],['class'=>'btn btn-primary btn-sm fas fa-edit']) ?>
-                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $produto->id],['confirm' => __('Tem certeza que deseja excluir {0}?', $produto->descricao),'class'=>'btn btn-danger btn-sm far fa-trash-alt']) ?>
+                        <?= $this->Html->link(__(''), ['action' => 'edit', $produto->id],['class'=>'btn btn-outline-primary btn-sm fas fa-edit']) ?>
+                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $produto->id],['confirm' => __('Tem certeza que deseja excluir {0}?', $produto->descricao),'class'=>'btn btn-outline-danger btn-sm far fa-trash-alt']) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

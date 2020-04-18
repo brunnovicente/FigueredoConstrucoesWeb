@@ -46,6 +46,7 @@ class AppController extends Controller
 
         $this->loadComponent('Auth',
             [
+                //'authorize' => ['Controller'],
                 'loginRedirect' => ['controller' => 'welcome', 'action' => 'index'],
                 'logoutRedirect' => ['controller' => 'users', 'action'=>'login']
             ]

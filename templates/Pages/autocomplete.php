@@ -10,8 +10,6 @@ $this->Html->script([
 <div class="container">
     <div class="row">
         <div class="col-12">
-
-
             <div class="col-12 row mt-2">
                 <div class="col-8">
                     <?php echo $this->Form->control('busca',['class'=>'form-control', 'label'=>'Busca', 'id'=>'busca']);?>
@@ -29,7 +27,8 @@ $this->Html->script([
                 <label for="produtos">Produtos</label>
                 <div class="row">
                     <div class="col-1">Código</div>
-                    <div class="col-8">Descrição</div>
+                    <div class="col-6">Descrição</div>
+                    <div class="col-2">Descrição</div>
                     <div class="col-2">Quantidade</div>
                     <div class="col-1">Açoes</div>
                 </div>
@@ -63,14 +62,16 @@ $this->Html->script([
             transformResult: function(response) {
                 return {
                     suggestions: $.map(JSON.parse(response).produtos, function(item) {
-                        return { value: item.descricao, data: item.id };
+                        return { value: item.descricao, data: item.id, price: item.preco};
                     })
                 };
             },
             minChars: 2,
             onSelect: function (suggestion) {
                 selected = suggestion;
-                $('#quantidade').focus();
+                if(selected == null) {
+                    $('#quantidade').focus();
+                }
             }
         });
 
@@ -78,7 +79,8 @@ $this->Html->script([
             // criação de linha de item
             $('#lista').append('<div id="item'+index+'" class="row'+((index % 2) == 1?' bg-light':'')+'">' +
                 '<div class="col-1"><input class="d-none" name="item['+index+'][id]" value="'+selected.data+'"/>'+selected.data+'</div>' +
-                '<div class="col-8">'+selected.value+'</div>'+
+                '<div class="col-6">'+selected.value+'</div>'+
+                '<div class="col-2">'+selected.price+'</div>'+
                 '<div class="col-2"><input class="form-control" name="item['+index+'][quantidade]" value="'+$('#quantidade').val()+'"/></div>' +
                 '<div class="col-1 p-1"><button class="btn btn-danger delete-item" type="button" onclick="removeItem(item'+index+')"><i class="fas fa-times"></i></button>'+
                 '</div>');

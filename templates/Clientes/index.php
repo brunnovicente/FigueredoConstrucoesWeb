@@ -24,10 +24,7 @@
 
     <ul class="nav">
         <li class="nav-item">
-            <?= $this->Html->link(__(' Início'), ['controller'=>'Welcome','action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm m-1 fas fa-home']) ?>
-        </li>
-        <li class="nav-item">
-            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-secondary btn-sm m-1 fas fa-plus']) ?>
+            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
         </li>
     </ul>
 
@@ -53,8 +50,8 @@
                     <td><?= h($cliente->telefone1) ?></td>
                     <td><?= h($cliente->telefone2) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__(''), ['action' => 'edit', $cliente->id], ['class'=>'btn btn-sm btn-primary fas fa-edit']) ?>
-                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $cliente->id], ['confirm' => __('Tem certeza que deseja excluir {0}?', $cliente->nome), 'class'=>'btn btn-sm btn-danger far fa-trash-alt']) ?>
+                        <?= $this->Html->link(__(''), ['action' => 'edit', $cliente->id], ['class'=>'btn btn-sm btn-outline-primary fas fa-edit']) ?>
+                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $cliente->id], ['confirm' => __('Tem certeza que deseja excluir {0}?', $cliente->nome), 'class'=>'btn btn-sm btn-outline-danger far fa-trash-alt']) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

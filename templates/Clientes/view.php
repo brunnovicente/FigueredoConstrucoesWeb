@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Cliente $cliente
  */
 ?>
-<div class="container">
+<div class="container-fluid m-1">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Dados do Cliente') ?></h3></a>
 
