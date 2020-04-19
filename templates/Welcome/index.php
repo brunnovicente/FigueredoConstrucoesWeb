@@ -11,7 +11,7 @@
             <i class="fas fa-shopping-cart fa-3x"></i><br>
             <span>Vender</span>
         </a>
-        <a class="navbar-brand text-primary" href="/produtos/index">
+        <a class="navbar-brand text-primary" href="/produtos/add">
             <i class="fas fa-paint-roller fa-3x"></i><br>
             <span>Produtos</span>
         </a>

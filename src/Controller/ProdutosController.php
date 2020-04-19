@@ -19,7 +19,7 @@ class ProdutosController extends AppController
      */
     public function index()
     {
-        $produtos = $this->paginate($this->Produtos, ['limit' => 10]);
+        $produtos = $this->paginate($this->Produtos);
 
         $this->set(compact('produtos'));
     }
