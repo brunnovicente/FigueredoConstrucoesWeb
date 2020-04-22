@@ -119,4 +119,12 @@ class ClientesTable extends Table
 
         return $validator;
     }
+
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['cpf'], 'CPF já cadastrado.'));
+        $rules->add($rules->isUnique(['email'], 'E-mail já cadastrado.'));
+        return $rules;
+    }
+
 }

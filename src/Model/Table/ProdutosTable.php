@@ -102,8 +102,7 @@ class ProdutosTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['codigoBarra']));
-        $rules->add($rules->isUnique(['codigobarras']));
+        $rules->add($rules->isUnique(['codigoBarra'], 'Código de barra já cadastrado.'));
 
         return $rules;
     }

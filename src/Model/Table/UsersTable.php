@@ -72,24 +72,24 @@ class UsersTable extends Table
             ->scalar('nome')
             ->maxLength('nome', 100)
             ->requirePresence('nome', 'create')
-            ->notEmptyString('nome');
+            ->notEmptyString('nome', 'Digite o Nome!');
 
         $validator
             ->scalar('username')
             ->maxLength('username', 100)
             ->requirePresence('username', 'create')
-            ->notEmptyString('username')
+            ->notEmptyString('username', 'Digite o nome de usuário!')
             ->add('username', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('password')
             ->maxLength('password', 100)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->notEmptyString('password', 'Digite a senha!');
 
         $validator
             ->email('email')
-            ->allowEmptyString('email');
+            ->notEmptyString('email', 'Digite o E-mail!');
 
         $validator
             ->scalar('categoria')
@@ -112,8 +112,8 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['username']));
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['username'], 'Nome de Usuário já cadastrado.'));
+        $rules->add($rules->isUnique(['email'], 'E-mail já cadastrado.'));
 
         return $rules;
     }

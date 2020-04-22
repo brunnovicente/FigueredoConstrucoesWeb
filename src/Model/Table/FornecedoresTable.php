@@ -63,12 +63,12 @@ class FornecedoresTable extends Table
         $validator
             ->scalar('cnpj')
             ->maxLength('cnpj', 45)
-            ->allowEmptyString('cnpj');
+            ->notEmptyString('cnpj', 'Digite o CNPJ!');
 
         $validator
             ->scalar('razao')
             ->maxLength('razao', 100)
-            ->allowEmptyString('razao');
+            ->allowEmptyString('razao', 'Digite a Razão Social!');
 
         $validator
             ->scalar('telefone1')
@@ -94,5 +94,14 @@ class FornecedoresTable extends Table
             ->allowEmptyString('endereco');
 
         return $validator;
+    }
+
+
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['email'], 'E-mail já cadastrado.'));
+        $rules->add($rules->isUnique(['cnpj'], 'CNPJ já cadastrado.'));
+
+        return $rules;
     }
 }
