@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
+ * @var \App\Model\Entity\User $usuário
  */
 ?>
 
@@ -16,7 +16,7 @@
 <div class="container">
     <div class="p-3 shadow">
         <div class="users form content">
-            <?= $this->Form->create($user) ?>
+            <?= $this->Form->create($usuario) ?>
             <div class="row">
                 <div class="col-12 form-group">
                     <?php echo $this->Form->control('nome',['class'=>'form-control','label'=>'NOME', 'id'=>'nome'])?>

@@ -50,14 +50,14 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $user = $this->Users->newEmptyEntity();
+        $usuario = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            $user->set('categoria', 'Administrador');
-            $user->set('status', 1);
+            $usuario = $this->Users->patchEntity($usuario, $this->request->getData());
+            $usuario->set('categoria', 'Administrador');
+            $usuario->set('status', 1);
 
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('Usuário '.$user->nome.' cadastrado com sucesso.'));
+            if ($this->Users->save($usuario)) {
+                $this->Flash->success(__('Usuário '.$usuario->nome.' cadastrado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
@@ -67,7 +67,7 @@ class UsersController extends AppController
         $user = $this->Auth->user();
 
         $this->set('user', $user);
-        $this->set(compact('user'));
+        $this->set(compact('usuario'));
     }
 
     /**
@@ -79,12 +79,12 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, [
+        $usuario = $this->Users->get($id, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
+            $usuario = $this->Users->patchEntity($usuario, $this->request->getData());
+            if ($this->Users->save($usuario)) {
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -95,7 +95,7 @@ class UsersController extends AppController
         $user = $this->Auth->user();
 
         $this->set('user', $user);
-        $this->set(compact('user'));
+        $this->set(compact('usuario'));
     }
 
     /**
