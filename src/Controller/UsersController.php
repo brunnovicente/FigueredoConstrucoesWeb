@@ -21,6 +21,9 @@ class UsersController extends AppController
     {
         $users = $this->paginate($this->Users);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('users'));
     }
 
@@ -60,6 +63,10 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('Erro ao cadastrar o usuário!.'));
         }
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('user'));
     }
 
@@ -84,6 +91,10 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('user'));
     }
 
