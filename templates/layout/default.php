@@ -97,14 +97,14 @@ $cakeDescription = 'Figueredo Construções';
                     <li><a href="/entradas/index">Entrada de Produtos</a></li>
                 </ul>
             </li>
-            <li>
+            <!--<li>
                 <div class="link"><i class="fa fa-chart-line"></i>Relatórios<i class="fa fa-chevron-down"></i></div>
                 <ul class="submenu">
                     <li><a href="/welcome">Gerência de Produtos Mínimos</a></li>
                     <li><a href="/welcome">Relatório de Vendas</a></li>
                     <li><a href="/welcome">Relatório de Entradas de Produtos</a></li>
                 </ul>
-            </li>
+            </li>-->
             <li>
                 </i><a class="link" href="/users/logout"><i class="fas fa-power-off"> </i> Sair</a>
             </li>

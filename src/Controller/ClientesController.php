@@ -19,14 +19,21 @@ class ClientesController extends AppController
      */
     public function index()
     {
-        $user = $this->Auth->user();
 
-        $clientes = $this->paginate($this->Clientes);
+        //Buscando Produtos
+        if($this->request->is('post')){
+            $clientes = $this->paginate($this->Clientes->find('all', ['conditions' => ['Clientes.nome LIKE' => '%'.$_POST['busca'].'%']]));
+        }else{
+            $clientes = $this->paginate($this->Clientes->find('all', ['conditions' => ['Clientes.status =' => 1]]));
+        }
+
+        $user = $this->Auth->user();
 
         $this->set('user', $user);
         $this->set(compact('clientes'));
 
     }
+
 
     /**
      * View method

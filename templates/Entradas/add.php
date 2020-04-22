@@ -5,6 +5,8 @@
  */
 $this->Html->script(['jquery.mask.js'], ['block' => true]);
 ?>
+
+
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Entrada de Produtos') ?></h3></a>

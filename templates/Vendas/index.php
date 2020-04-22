@@ -22,9 +22,11 @@ $this->Paginator->setTemplates([
 
 <div class="container-fluid">
     <ul class="nav">
+        <!--
         <li class="nav-item">
-            <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
+            <?//= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
         </li>
+        -->
     </ul>
     <div class="shadow">
         <table class="table table-hover">
@@ -58,9 +60,10 @@ $this->Paginator->setTemplates([
                     <td><?= $venda->has('user') ? $this->Html->link($venda->user->nome, ['controller' => 'Users', 'action' => 'view', $venda->user->id]) : '' ?></td>
                     <td><?= h($venda->pagamento) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__(''), ['action' => 'view', $venda->id], ['class'=>'btn btn-outline-info btn-sm fas fa-folder-open']) ?>
-                        <?= $this->Html->link(__(''), ['action' => 'edit', $venda->id], ['class'=>'btn btn-outline-primary btn-sm fas fa-edit']) ?>
-                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $venda->id], ['class'=>'btn btn-outline-danger btn-sm fas fa-trash-alt', 'confirm' => __('Tem certeza que deseja excluir a venda # {0}?', $venda->id)]) ?>
+                        <?= $this->Html->link(__(''), ['action' => 'view', $venda->id], ['class'=>'btn btn-outline-info btn-sm fas fa-folder-open']); ?>
+                     <!--   <?//= $this->Html->link(__(''), ['action' => 'edit', $venda->id], ['class'=>'btn btn-outline-primary btn-sm fas fa-edit']) ?>
+                        <?//= $this->Form->postLink(__(''), ['action' => 'delete', $venda->id], ['class'=>'btn btn-outline-danger btn-sm fas fa-trash-alt', 'confirm' => __('Tem certeza que deseja excluir a venda # {0}?', $venda->id)]) ?>
+                        -->
                     </td>
                 </tr>
                 <?php endforeach; ?>

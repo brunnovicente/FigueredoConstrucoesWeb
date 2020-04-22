@@ -16,10 +16,16 @@
 
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Gerência de Clientes') ?></h3></a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Digite o nome do cliente" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" type="submit"></button>
-        </form>
+        <?= $this->Form->create() ?>
+        <div class="row">
+            <div class="form-group col-12">
+                <?php echo $this->Form->control('',['class'=>'form-control','label'=>'', 'id'=>'busca', 'placeholder'=>'Nome do Cliente'])?>
+            </div>
+        </div>
+        <div class="row mb-2 mr-1 justify-content-end">
+            <?= $this->Form->button(__(' '), ['class'=>'btn btn-outline-success fas fa-search']) ?>
+        </div>
+        <?= $this->Form->end() ?>
     </nav>
 
     <ul class="nav">
