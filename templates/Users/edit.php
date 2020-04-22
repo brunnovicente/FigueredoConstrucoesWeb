@@ -4,33 +4,42 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
+
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand"><h3><?= __('Editar Usuário') ?></h3></a>
+        <?= $this->Html->link(__(' Voltar'), ['action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm fas fa-angle-left']) ?>
+    </nav>
+</div>
+<br>
+
+<div class="container">
+    <div class="p-3 shadow">
         <div class="users form content">
             <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Edit User') ?></legend>
-                <?php
-                    echo $this->Form->control('nome');
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('categoria');
-                    echo $this->Form->control('status');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <div class="row">
+                <div class="col-12 form-group">
+                    <?php echo $this->Form->control('nome',['class'=>'form-control','label'=>'NOME', 'id'=>'nome'])?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 form-group">
+                    <?php echo $this->Form->control('username',['class'=>'form-control','label'=>'NOME DE USUÁRIO', 'id'=>'username'])?>
+                </div>
+                <div class="col-6 form-group">
+                    <?php echo $this->Form->control('password',['class'=>'form-control','label'=>'SENHA', 'id'=>'senha'])?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 form-group">
+                    <?php echo $this->Form->control('email',['class'=>'form-control','label'=>'E-MAIL', 'id'=>'email'])?>
+                </div>
+            </div>
+            <div class="row mb-2 mr-1 justify-content-end">
+                <?= $this->Form->button(__(' Salvar'), ['class'=>'btn btn-success fas fa-save']) ?>
+            </div>
             <?= $this->Form->end() ?>
         </div>
     </div>
