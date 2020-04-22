@@ -48,6 +48,9 @@ class ClientesController extends AppController
             'contain' => ['Vendas'],
         ]);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set('cliente', $cliente);
     }
 
@@ -69,6 +72,10 @@ class ClientesController extends AppController
             }
             $this->Flash->error(__('Erro ao cadastrar o cliente.'));
         }
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('cliente'));
     }
 
@@ -93,6 +100,10 @@ class ClientesController extends AppController
             }
             $this->Flash->error(__('Erro ao editar os dados do cliente.'));
         }
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('cliente'));
     }
 
@@ -113,6 +124,9 @@ class ClientesController extends AppController
             $this->Flash->error(__('Erro ao excluir o cliente.'));
         }
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         return $this->redirect(['action' => 'index']);
     }
 }

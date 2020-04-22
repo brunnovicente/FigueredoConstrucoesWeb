@@ -24,6 +24,9 @@ class VendasController extends AppController
         ];
         $vendas = $this->paginate($this->Vendas);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('vendas'));
     }
 
@@ -40,6 +43,9 @@ class VendasController extends AppController
             'contain' => ['Clientes', 'Users', 'Itens'],
         ]);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set('venda', $venda);
     }
 
@@ -62,6 +68,10 @@ class VendasController extends AppController
         }
         $clientes = $this->Vendas->Clientes->find('list', ['limit' => 200]);
         $users = $this->Vendas->Users->find('list', ['limit' => 200]);
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('venda', 'clientes', 'users'));
     }
 
@@ -88,6 +98,10 @@ class VendasController extends AppController
         }
         $clientes = $this->Vendas->Clientes->find('list', ['limit' => 200]);
         $users = $this->Vendas->Users->find('list', ['limit' => 200]);
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('venda', 'clientes', 'users'));
     }
 

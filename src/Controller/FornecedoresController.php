@@ -21,6 +21,9 @@ class FornecedoresController extends AppController
     {
         $fornecedores = $this->paginate($this->Fornecedores);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('fornecedores'));
     }
 
@@ -37,6 +40,9 @@ class FornecedoresController extends AppController
             'contain' => ['Entradas'],
         ]);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set('fornecedore', $fornecedore);
     }
 
@@ -58,6 +64,9 @@ class FornecedoresController extends AppController
             }
             $this->Flash->error(__('The fornecedore could not be saved. Please, try again.'));
         }
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('fornecedore'));
     }
 
@@ -82,6 +91,9 @@ class FornecedoresController extends AppController
             }
             $this->Flash->error(__('The fornecedore could not be saved. Please, try again.'));
         }
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('fornecedore'));
     }
 

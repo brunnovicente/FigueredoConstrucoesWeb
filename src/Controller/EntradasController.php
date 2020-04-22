@@ -24,6 +24,9 @@ class EntradasController extends AppController
         ];
         $entradas = $this->paginate($this->Entradas);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('entradas'));
     }
 
@@ -40,6 +43,9 @@ class EntradasController extends AppController
             'contain' => ['Produtos', 'Users', 'Fornecedores'],
         ]);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set('entrada', $entrada);
     }
 
@@ -63,6 +69,10 @@ class EntradasController extends AppController
         $produtos = $this->Entradas->Produtos->find('list', ['limit' => 200]);
         $users = $this->Entradas->Users->find('list', ['limit' => 200]);
         $fornecedores = $this->Entradas->Fornecedores->find('list', ['limit' => 200]);
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('entrada', 'produtos', 'users', 'fornecedores'));
     }
 
@@ -90,6 +100,11 @@ class EntradasController extends AppController
         $produtos = $this->Entradas->Produtos->find('list', ['limit' => 200]);
         $users = $this->Entradas->Users->find('list', ['limit' => 200]);
         $fornecedores = $this->Entradas->Fornecedores->find('list', ['limit' => 200]);
+
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('entrada', 'produtos', 'users', 'fornecedores'));
     }
 

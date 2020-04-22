@@ -21,6 +21,9 @@ class ProdutosController extends AppController
     {
         $produtos = $this->paginate($this->Produtos);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('produtos'));
     }
 
@@ -37,6 +40,9 @@ class ProdutosController extends AppController
             'contain' => ['Entradas', 'Itens'],
         ]);
 
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set('produto', $produto);
     }
 
@@ -58,6 +64,10 @@ class ProdutosController extends AppController
             }
             $this->Flash->error(__('The produto could not be saved. Please, try again.'));
         }
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('produto'));
     }
 
@@ -82,6 +92,10 @@ class ProdutosController extends AppController
             }
             $this->Flash->error(__('The produto could not be saved. Please, try again.'));
         }
+
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
         $this->set(compact('produto'));
     }
 
