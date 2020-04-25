@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
+
 /**
  * Vendas Controller
  *
@@ -124,4 +126,58 @@ class VendasController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-}
+
+    /**
+     * Action da página do autocomplete
+     */
+    public function vender() {
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            foreach ($data['item'] as $item) {
+                // TODO: criar objetos itens
+                echo "Id: ".$item['id']."|Quant: ".$item['quantidade']."<br>";
+            }
+        }
+        $user = $this->Auth->user();
+
+        $this->set('user', $user);
+    }
+
+    /**
+     * Action do ajax do autocomplete
+     */
+    public function produtosAjax() {
+        $this->viewBuilder()->setLayout('ajax');
+        $query = TableRegistry::getTableLocator()->get('produtos')->find('all');
+        if ($this->request->is('get')) {
+            if(!empty($this->request->getQuery('q'))) {
+                $query->where(['OR' => [
+                    ['codigoBarra LIKE' => '%'.$this->request->getQuery('q').'%'],
+                    ['descricao LIKE' => '%'.$this->request->getQuery('q').'%']
+                ]]);
+                $produtos = $this->paginate($query);
+                $this->set(compact('produtos'));
+                $this->viewBuilder()->setOption('serialize', ['produtos']);
+            }
+
+        }
+    }
+
+    public function clientesAjax() {
+        $this->viewBuilder()->setLayout('ajax');
+        $query = TableRegistry::getTableLocator()->get('clientes')->find('all');
+        if ($this->request->is('get')) {
+            if(!empty($this->request->getQuery('q'))) {
+                $query->where(['OR' => [
+                    ['nome LIKE' => '%'.$this->request->getQuery('q').'%'],
+                    ['cpf =' => $this->request->getQuery('q')]
+                ]]);
+                $clientes = $this->paginate($query);
+                $this->set(compact('clientes'));
+                $this->viewBuilder()->setOption('serialize', ['clientes']);
+            }
+
+        }
+    }
+
+}//Fim da Classe

@@ -78,7 +78,7 @@ $cakeDescription = 'Figueredo Construções';
             <li>
                 <div class="link"><i class="fa fa-shopping-cart"></i>Vendas<i class="fa fa-chevron-down"></i></div>
                 <ul class="submenu">
-                    <li><a href="/vendas/add">Operação de Venda</a></li>
+                    <li><a href="/vendas/vender">Operação de Venda</a></li>
                     <li><a href="/vendas/index">Consulta de Vendas</a></li>
                 </ul>
             </li>
