@@ -116,62 +116,61 @@ $UF = array(
     </nav>
 </div>
 <br>
+<div class="container shadow">
+    <?= $this->Form->create($cliente) ?>
 
-    <div class="container shadow">
-        <?= $this->Form->create($cliente) ?>
+    <div class="row">
 
-        <div class="row">
-
-            <div class="form-group col-3">
-                <?php echo $this->Form->control('cpf',['class'=>'form-control','label'=>'CPF', 'id'=>'input-cpf'])?>
-            </div>
-            <div class="form-group col-9">
-                <?php echo $this->Form->control('nome',['class'=>'form-control','label'=>'NOME'])?>
-            </div>
+        <div class="form-group col-3">
+            <?php echo $this->Form->control('cpf',['class'=>'form-control','label'=>'CPF', 'id'=>'input-cpf'])?>
         </div>
-
-        <div class="row">
-            <div class="col-3 form-group">
-                <?php echo $this->Form->control('cep',['class'=>'form-control','label'=>'CEP', 'id'=>'cep'])?>
-            </div>
-            <div class="col-7 form-group">
-                <?php echo $this->Form->control('endereco',['class'=>'form-control','label'=>'ENDEREÇO', 'id'=>'rua'])?>
-            </div>
-            <div class="col-2 form-group">
-                <?php echo $this->Form->control('numero',['class'=>'form-control','label'=>'NÚMERO', 'id'=>'numero'])?>
-            </div>
+        <div class="form-group col-9">
+            <?php echo $this->Form->control('nome',['class'=>'form-control','label'=>'NOME'])?>
         </div>
-
-
-        <div class="row">
-            <div class="col-4 form-group">
-                <?php echo $this->Form->control('bairro',['class'=>'form-control','label'=>'BAIRRO', 'id'=>'bairro'])?>
-            </div>
-            <div class="col-5 form-group">
-                <?php echo $this->Form->control('cidade',['class'=>'form-control','label'=>'CIDADE', 'id'=>'cidade'])?>
-            </div>
-            <div class="col-3 form-group">
-                <?php echo $this->Form->control('estado',['options'=>$UF, 'class'=>'form-control','label'=>'ESTADO', 'id'=>'uf'])?>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-3 form-group">
-                <?php echo $this->Form->control('telefone1',['class'=>'form-control','label'=>'TELEFONE 1', 'id'=>'telefone1'])?>
-            </div>
-            <div class="col-3 form-group">
-                <?php echo $this->Form->control('telefone2',['class'=>'form-control','label'=>'TELEFONE 2', 'id'=>'telefone2'])?>
-            </div>
-            <div class="col-6 form-group">
-                <?php echo $this->Form->control('email',['class'=>'form-control','label'=>'E-MAIL'])?>
-            </div>
-        </div>
-        <div class="row mb-2 mr-1 justify-content-end">
-            <?= $this->Form->button(__(' Salvar'), ['class'=>'btn btn-success far fa-save']) ?>
-        </div>
-        <br>
-        <?= $this->Form->end() ?>
     </div>
+
+    <div class="row">
+        <div class="col-3 form-group">
+            <?php echo $this->Form->control('cep',['class'=>'form-control','label'=>'CEP', 'id'=>'cep'])?>
+        </div>
+        <div class="col-7 form-group">
+            <?php echo $this->Form->control('endereco',['class'=>'form-control','label'=>'ENDEREÇO', 'id'=>'rua'])?>
+        </div>
+        <div class="col-2 form-group">
+            <?php echo $this->Form->control('numero',['class'=>'form-control','label'=>'NÚMERO', 'id'=>'numero'])?>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-4 form-group">
+            <?php echo $this->Form->control('bairro',['class'=>'form-control','label'=>'BAIRRO', 'id'=>'bairro'])?>
+        </div>
+        <div class="col-5 form-group">
+            <?php echo $this->Form->control('cidade',['class'=>'form-control','label'=>'CIDADE', 'id'=>'cidade'])?>
+        </div>
+        <div class="col-3 form-group">
+            <?php echo $this->Form->control('estado',['options'=>$UF, 'class'=>'form-control','label'=>'ESTADO', 'id'=>'uf'])?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3 form-group">
+            <?php echo $this->Form->control('telefone1',['class'=>'form-control','label'=>'TELEFONE 1', 'id'=>'telefone1'])?>
+        </div>
+        <div class="col-3 form-group">
+            <?php echo $this->Form->control('telefone2',['class'=>'form-control','label'=>'TELEFONE 2', 'id'=>'telefone2'])?>
+        </div>
+        <div class="col-6 form-group">
+            <?php echo $this->Form->control('email',['class'=>'form-control','label'=>'E-MAIL'])?>
+        </div>
+    </div>
+    <div class="row mb-2 mr-1 justify-content-end">
+        <?= $this->Form->button(__(' Salvar'), ['class'=>'btn btn-success far fa-save']) ?>
+    </div>
+    <br>
+    <?= $this->Form->end() ?>
+</div>
 
 <?= $this->Html->scriptBlock('
 $(document).ready( function() {
