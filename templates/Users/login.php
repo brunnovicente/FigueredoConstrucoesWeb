@@ -8,13 +8,15 @@
 <div class="container shadow col-4 p-2">
     <div class="row mb-5 justify-content-center">
         <div class="col-9">
-            <?php echo $this->Html->image('logo.png', ['width'=>'290px'])?>
+            <?php echo $this->Html->image('logo.png', ['class'=>'img-fluid'])?>
         </div>
     </div>
     <?= $this->Form->create()?>
 
-    <div class="row mb-5 justify-content-center">
-        <p class="h2"">Acesso ao Sistema</p>
+    <div class="row mb-2">
+        <div class="col-12 h4 text-center">
+            Acesso ao Sistema
+        </div>
     </div>
 
     <div class="row">
