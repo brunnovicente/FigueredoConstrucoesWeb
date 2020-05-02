@@ -20,6 +20,9 @@
             </li>
         </ul>
     </nav>
+</div>
+<br>
+<div class="container">
     <div class="p-3 shadow">
         <h3 class="text-center"><?= h($cliente->nome) ?></h3>
         <table class="table">

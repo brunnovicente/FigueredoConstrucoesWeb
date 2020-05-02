@@ -5,22 +5,42 @@
  */
 ?>
 <br>
-<div class="container" align="center">
+<div class="container shadow col-4 p-2">
+    <div class="row mb-5 justify-content-center">
+        <div class="col-9">
+            <?php echo $this->Html->image('logo.png', ['width'=>'290px'])?>
+        </div>
+    </div>
+    <?= $this->Form->create()?>
 
-    <div class="p-3 col-4 shadow">
-        <div><?php echo $this->Html->image('logo.png', ['width'=>'290px'])?></div>
-        <br>
-        <?= $this->Form->create()?>
-        <p class="h2" align="center">Acesso ao Sistema</p>
-        <div class="form-group">
-            <?php echo $this->Form->control('username', ['class' =>'form-control h3','label'=>'LOGIN']);?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->control('password', ['class' =>'form-control h3','label'=>'SENHA']);?>
-        </div>
-        <?= $this->Form->button(__('Entrar'), ['class'=>'btn btn-success btn-block']);?>
-        <?= $this->Form->end() ?>
-        <a class="btn btn-light btn-block mt-2" href="/">Voltar</a>
+    <div class="row mb-5 justify-content-center">
+        <p class="h2"">Acesso ao Sistema</p>
     </div>
 
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <?php echo $this->Form->control('username', ['class' =>'form-control h3','label'=>'LOGIN']);?>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <?php echo $this->Form->control('password', ['class' =>'form-control h3','label'=>'SENHA']);?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <?= $this->Form->button(__('Entrar'), ['class'=>'btn btn-success btn-block']);?>
+        </div>
+        <?= $this->Form->end() ?>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-light btn-block mt-2" href="/">Voltar</a>
+        </div>
+    </div>
 </div>

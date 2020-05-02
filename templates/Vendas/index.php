@@ -22,11 +22,9 @@ $this->Paginator->setTemplates([
 
 <div class="container-fluid">
     <ul class="nav">
-        <!--
         <li class="nav-item">
-            <?//= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
+            <?= $this->Html->link(__(' Vender'), ['action' => 'vender'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
         </li>
-        -->
     </ul>
     <div class="shadow">
         <table class="table table-hover">

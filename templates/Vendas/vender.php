@@ -10,50 +10,49 @@ $this->Html->script([
 
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"><h3><?= __('Venda de Produtos') ?></h3></a>
+        <a class="navbar-brand"><h3><?= __('CAIXA ABERTO - Venda de Produtos') ?></h3></a>
         <?= $this->Html->link(__(' Voltar'), ['action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm fas fa-angle-left']) ?>
     </nav>
 </div>
 <br>
 
-<div class="container-fluid">
-    <div class="row"> <!-- Div Linha -->
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col-3">
+            <?php echo $this->Form->control('cpf',['class'=>'form-control', 'label'=>'CPF', 'id'=>'cpf']);?>
+        </div>
+        <div class="col-9">
+            <?php echo $this->Form->control('cliente',['class'=>'form-control', 'label'=>'CLIENTE', 'id'=>'buscacliente']);?>
+        </div>
+    </div>
+
+    <div class="row mb-3"> <!-- Div Linha -->
         <!-- Dados de Busca -->
-        <div class="col-4">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <?php echo $this->Form->control('cliente',['class'=>'form-control', 'label'=>'CLIENTE', 'id'=>'buscacliente']);?>
-                </div>
-            </div>
-
-            <div class="row mb-4 mt-4">
-                <div class="col-12">
-                    <?php echo $this->Form->control('busca',['class'=>'form-control', 'label'=>'PRODUTO', 'id'=>'busca']);?>
-                </div>
-            </div>
-
-            <div class="row mb-4 mt-4">
-                <div class="col-6">
-                    <label for"preco">Preço (R$)</label>
-                    <div id="preco" class="form-control"></div>
-                </div>
-                <div class="col-6">
-                    <?php echo $this->Form->control('quantidade', ['class'=>'form-control', 'label' => 'Quantidade', 'id'=>'quantidade']);?>
-                </div>
-            </div>
-
-            <div class="row float-right mt-3">
-                <div class="col-12">
-                    <?= $this->Form->button(__(' Add'), ['type' => 'button', 'class'=>'btn btn-primary fas fa-plus', 'id' => 'adicionar']) ?>
-                </div>
-
-            </div>
+        <div class="col-8">
+            <?php echo $this->Form->control('busca',['class'=>'form-control', 'label'=>'PRODUTO', 'id'=>'busca']);?>
         </div>
 
+        <div class="col-2">
+            <label for"preco">Preço (R$)</label>
+            <div id="preco" class="form-control"></div>
+         </div>
+
+        <div class="col-2">
+             <?php echo $this->Form->control('quantidade', ['class'=>'form-control', 'label' => 'Quantidade', 'id'=>'quantidade']);?>
+        </div>
+    </div>
+
+    <div class="row mb-5 float-right">
+        <div class="col-12">
+            <?= $this->Form->button(__(' Add'), ['type' => 'button', 'class'=>'btn btn-primary fas fa-plus', 'id' => 'adicionar']) ?>
+        </div>
+    </div>
+    <br>
+    <div class="row shadow mt-5 p-2">
         <!-- Produtos Adicionados na Venda -->
-        <div class="col-8 shadow p-1">
+        <div class="col-12">
             <?= $this->Form->create(null) ?>
-            <div class="col-12 mt-2">
                 <label class="bg-light" for="produtos">ITENS DA VENDA</label>
                 <div class="row">
                     <div class="col-1">Código</div>
@@ -69,13 +68,11 @@ $this->Html->script([
                     <div class="col-2 offset-8">SUB TOTAL</div>
                     <div class="form-control col-2" id="total">0.00</div>
                 </div>
-            </div>
             <div class="col-12 mt-2">
                 <?= $this->Form->submit(__('Salvar'), ['class'=>'btn btn-success']) ?>
             </div>
             <?= $this->Form->end() ?>
         </div>
-
     </div> <!-- Fim da DIV linha -->
 </div>
 

@@ -23,7 +23,7 @@
     </nav>
 </div>
 <br>
-<div class="container-fluid">
+<div class="container">
 
     <div class="p-3 shadow">
 

@@ -21,7 +21,7 @@
 </div>
 <br>
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="p-3 shadow">
             <h3 class="text-center"><?= h($user->nome) ?></h3>
