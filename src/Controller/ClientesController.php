@@ -67,7 +67,6 @@ class ClientesController extends AppController
             $cliente->set('status', 1);
             if ($this->Clientes->save($cliente)) {
                 $this->Flash->success(__('Cliente cadastrado com sucesso.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('Erro ao cadastrar o cliente.'));

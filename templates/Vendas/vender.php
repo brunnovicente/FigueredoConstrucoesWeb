@@ -43,17 +43,17 @@ $this->Html->script([
         </div>
     </div>
 
-    <div class="row mb-5 float-right">
+    <div class="row mb-5">
         <div class="col-12">
-            <?= $this->Form->button(__(' Add'), ['type' => 'button', 'class'=>'btn btn-primary fas fa-plus', 'id' => 'adicionar']) ?>
+            <?= $this->Form->button(__(' Add'), ['type' => 'button', 'class'=>'btn btn-primary fas fa-plus float-right', 'id' => 'adicionar']) ?>
         </div>
     </div>
-    <br>
+
     <div class="row shadow mt-5 p-2">
         <!-- Produtos Adicionados na Venda -->
         <div class="col-12">
             <?= $this->Form->create(null) ?>
-                <label class="bg-light" for="produtos">ITENS DA VENDA</label>
+                <label class="bg-light h4" for="produtos">ITENS DA VENDA</label>
                 <div class="row">
                     <div class="col-1">Código</div>
                     <div class="col-6">Descrição</div>
@@ -68,12 +68,51 @@ $this->Html->script([
                     <div class="col-2 offset-8">SUB TOTAL</div>
                     <div class="form-control col-2" id="total">0.00</div>
                 </div>
-            <div class="col-12 mt-2">
-                <?= $this->Form->submit(__('Salvar'), ['class'=>'btn btn-success']) ?>
+            <div class="col-12 mt-5">
+                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalExemplo">
+                    Finalizar
+                </button>
             </div>
+
+            <div class="row"> <!-- DIV do Modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Finalizar Venda</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row p-3">
+                                    <div class="col">SUB TOTAL</div>
+                                    <div class="col form-control" id="total2">0.00</div>
+                                </div>
+                                <div class="row p-3">
+                                    <div class="col">
+                                        <?php echo $this->Form->control('', ['class'=>'form-control', 'label' => 'VALOR PAGO', 'id'=>'valorpago']);?>
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <div class="col">TROCO</div>
+                                    <div class="col form-control" id="troco">0.00</div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <?= $this->Form->submit(__('OK'), ['class'=>'btn btn-success']) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- FIm da DIV do Modal -->
+
             <?= $this->Form->end() ?>
         </div>
     </div> <!-- Fim da DIV linha -->
+
 </div>
 
 <script>
@@ -89,6 +128,7 @@ $this->Html->script([
             total = total + p * q;
         });
         $('#total').html(total);
+        $('#total2').html(total);
     }
     window.onload = function() {
 
@@ -126,7 +166,7 @@ $this->Html->script([
             transformResult: function(response) {
                 return {
                     suggestions: $.map(JSON.parse(response).clientes, function(item) {
-                        return { value: item.nome};
+                        return { value: item.nome, data: item.id, cpf:item.cpf};
                     })
                 };
             },
@@ -134,6 +174,7 @@ $this->Html->script([
             onSelect: function (suggestion) {
                 if(cselected == null) {
                     cselected = suggestion;
+                    $('#cpf').html(suggestion.cpf)
                     $('#busca').focus();
                 }
             }

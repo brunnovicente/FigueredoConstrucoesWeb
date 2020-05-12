@@ -133,6 +133,12 @@ class VendasController extends AppController
     public function vender() {
         if ($this->request->is('post')) {
             $data = $this->request->getData();
+
+            //Criar Venda
+            $venda = $this->Vendas->newEmptyEntity();
+            $venda->set('total', $data['total']);
+            $venda->set('status', 1);
+            echo $data['buscaliente'];
             foreach ($data['item'] as $item) {
                 // TODO: criar objetos itens
                 echo "Id: ".$item['id']."|Quant: ".$item['quantidade']."<br>";
