@@ -36,6 +36,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+		var_dump($this->Auth); die();
         $user = $this->Users->get($id, [
             'contain' => ['Entradas', 'Vendas'],
         ]);
