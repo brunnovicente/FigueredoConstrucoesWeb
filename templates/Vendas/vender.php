@@ -119,50 +119,43 @@ $this->Html->script([
     function removeItem(item) {
         $(item).remove();
     }
+
     function calculaTotal() {
         var total = 0;
         $('#lista > div').each(function(index, element){
             var p = parseFloat($(element).find('.item-preco').text());
             var q = parseFloat($(element).find('.item-quantidade').val());
-            console.log(p * q);
             total = total + p * q;
         });
-        $('#total').html(total);
-        $('#total2').html(total);
+        $('#total').html(parseFloat(total, 10).toFixed(2).toString());
+        $('#total2').html(parseFloat(total, 10).toFixed(2).toString());
     }
+
+    function getItemOnBasket(id) {
+        let e = null;
+        $('#lista > div').each(function(index, element){
+            let elem_id = parseInt($(element).find('.item-id').text());
+            if(elem_id === id) {
+                e = element;
+            }
+        });
+        return e;
+    }
+
     window.onload = function() {
 
         // index pra gerar linhas de itens
         var index = 0;
 
         // item selecionado no autocomplete
-        var selected;
         var cselected;
+        var selected;
 
         // autocomplete
-        $("#busca").autocomplete({
-            serviceUrl: "produtos-ajax",
-            paramName: 'q',
-            transformResult: function(response) {
-                return {
-                    suggestions: $.map(JSON.parse(response).produtos, function(item) {
-                        return { value: item.descricao, data: item.id, price: item.preco };
-                    })
-                };
-            },
-            minChars: 2,
-            onSelect: function (suggestion) {
-                if(selected == null) {
-                    selected = suggestion;
-                    $('#quantidade').focus();
-                    $('#preco').html(suggestion.price);
-                }
-            }
-        });
-
         $("#buscacliente").autocomplete({
             serviceUrl: "clientes-ajax",
             paramName: 'q',
+            autoSelectFirst: true,
             transformResult: function(response) {
                 return {
                     suggestions: $.map(JSON.parse(response).clientes, function(item) {
@@ -180,16 +173,45 @@ $this->Html->script([
             }
         });
 
+        $("#busca").autocomplete({
+            serviceUrl: "produtos-ajax",
+            paramName: 'q',
+            autoSelectFirst: true,
+            transformResult: function(response) {
+                return {
+                    suggestions: $.map(JSON.parse(response).produtos, function(item) {
+                        return { value: item.descricao, data: item.id, price: item.preco };
+                    })
+                };
+            },
+            minChars: 2,
+            onSelect: function (suggestion) {
+                if(selected == null) {
+                    selected = suggestion;
+                    $('#quantidade').focus();
+                    $('#preco').html(suggestion.price);
+                }
+            }
+        });
+
         $("#adicionar").click(function() {
-            // criação de linha de item
-            $('#lista').append('<div id="item'+index+'" class="row item-linha'+((index % 2) == 1?' bg-light':'')+'">' +
-                '<div class="col-1"><input class="d-none" name="item['+index+'][id]" value="'+selected.data+'"/>'+selected.data+'</div>' +
-                '<div class="col-6">'+selected.value+'</div>'+
-                '<div class="col-2 item-preco">'+selected.price+'</div>'+
-                '<div class="col-2"><input class="form-control item-quantidade" name="item['+index+'][quantidade]" value="'+$('#quantidade').val()+'"/></div>' +
-                '<div class="col-1 p-1"><button class="btn btn-danger delete-item" type="button" onclick="removeItem(item'+index+')"><i class="fas fa-times"></i></button>'+
-                '</div>');
-            index++;
+            let item_div = getItemOnBasket(selected.data);
+            console.log(item_div);
+            if(item_div == null) {
+                // criação de linha de item
+                $('#lista').append('<div id="item' + index + '" class="row item-linha' + ((index % 2) == 1 ? ' bg-light' : '') + '">' +
+                    '<div class="col-1 item-id"><input class="d-none" name="item[' + index + '][id]" value="' + selected.data + '"/>' + selected.data + '</div>' +
+                    '<div class="col-6">' + selected.value + '</div>' +
+                    '<div class="col-2 item-preco">' + selected.price + '</div>' +
+                    '<div class="col-2"><input class="form-control item-quantidade" name="item[' + index + '][quantidade]" value="' + $('#quantidade').val() + '"/></div>' +
+                    '<div class="col-1 p-1"><button class="btn btn-danger delete-item" type="button" onclick="removeItem(item' + index + ')"><i class="fas fa-times"></i></button>' +
+                    '</div>');
+                index++;
+            } else {
+                let item_quant = parseInt($(item_div).find('.item-quantidade').val());
+                let list_quant = parseInt($('#quantidade').val());
+                $(item_div).find('.item-quantidade').val(item_quant+list_quant);
+            }
             // limpar campos
             selected = null;
             $('#quantidade').val("");
