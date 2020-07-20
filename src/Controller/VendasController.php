@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
+use App\Model\Entity\Iten;
 
 /**
  * Vendas Controller
@@ -131,21 +132,51 @@ class VendasController extends AppController
      * Action da página do autocomplete
      */
     public function vender() {
+        $user = $this->Auth->user();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
 
+
             //Criar Venda
             $venda = $this->Vendas->newEmptyEntity();
-            $venda->set('total', $data['total']);
-            $venda->set('status', 1);
-            echo $data['buscaliente'];
-            foreach ($data['item'] as $item) {
-                // TODO: criar objetos itens
-                echo "Id: ".$item['id']."|Quant: ".$item['quantidade']."<br>";
-            }
-        }
-        $user = $this->Auth->user();
 
+            if($data['idcliente'] == ''){
+                $venda->set('cliente_id', 1);
+            }else{
+                $venda->set('cliente_id', $data['idcliente']);
+            }
+            if($data['pagamento']=='Pendente') {
+                $venda->set('status', 0);
+                $venda->set('pagamento', '');
+            }else{
+                $venda->set('status', 1);
+                $venda->set('pagamento', $data['pagamento']);
+            }
+
+            $venda->set('user_id', $user['id']);
+            $venda->set('total', $data['total']);
+
+            if ($this->Vendas->save($venda)) {
+                foreach ($data['item'] as $it) {
+                    //echo "Id: ".$item['id']."|Quant: ".$item['quantidade']."<br>";
+                    $item = $this->Vendas->Itens->newEmptyEntity();
+                    $item->set('quantidade', $it['quantidade']);
+                    $item->set('produto_id', $it['id']);
+                    $item->set('total', $it['total']);
+                    $item->set('venda_id', $venda->get('id'));
+                    if($this->Vendas->Itens->save($item)){
+                        $this->Flash->success(__('Venda realizada com sucesso.'));
+                        return $this->redirect(['action' => 'index']);
+                    }
+                }//Fim do ForEach
+            }//Fim do If do Save venda
+
+            //print_r($data);
+            //foreach ($data['item'] as $item) {
+                // TODO: criar objetos itens
+                //echo "Id: ".$item['id']."|Quant: ".$item['quantidade']."<br>";
+            //}
+        }
         $this->set('user', $user);
     }
 

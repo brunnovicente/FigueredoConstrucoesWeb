@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
+
 /**
  * Produtos Controller
  *
@@ -19,12 +21,24 @@ class ProdutosController extends AppController
      */
     public function index()
     {
-        $produtos = $this->paginate($this->Produtos);
-
         $user = $this->Auth->user();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $produtos = TableRegistry::getTableLocator()->get('produtos')->find('all');
 
-        $this->set('user', $user);
-        $this->set(compact('produtos'));
+            $produtos->where(['OR' => [
+                ['descricao LIKE' => '%'.$data['busca'].'%'],
+                ['codigoBarra =' => $data['busca']]
+
+            ]]);
+            $produtos = $this->paginate($produtos);
+            $this->set('user', $user);
+            $this->set(compact('produtos'));
+        }else {
+            $produtos = $this->paginate($this->Produtos);
+            $this->set('user', $user);
+            $this->set(compact('produtos'));
+        }
     }
 
     /**
@@ -57,10 +71,16 @@ class ProdutosController extends AppController
         if ($this->request->is('post')) {
             $produto = $this->Produtos->patchEntity($produto, $this->request->getData());
             $produto->set('status', 1);
+            if($produto->get('codigoBarra') == ""){
+                $produto->set('codigoBarra', uniqid());
+            }
+            if($produto->get('estoque') == ""){
+                $produto->set('estoque', 0);
+            }
             if ($this->Produtos->save($produto)) {
-                $this->Flash->success(__('The produto has been saved.'));
+                $this->Flash->success(__('Produto cadastrado com sucesso!'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The produto could not be saved. Please, try again.'));
         }
@@ -85,12 +105,17 @@ class ProdutosController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $produto = $this->Produtos->patchEntity($produto, $this->request->getData());
+
+            if($produto->get('codigoBarra') == ""){
+                $produto->set('codigoBarra', uniqid());
+            }
+
             if ($this->Produtos->save($produto)) {
-                $this->Flash->success(__('The produto has been saved.'));
+                $this->Flash->success(__('Produto cadastrado com sucesso!.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The produto could not be saved. Please, try again.'));
+            $this->Flash->error(__('Erro ao cadastrar o produto. Por favro, tente novamente!'));
         }
 
         $user = $this->Auth->user();

@@ -1,5 +1,5 @@
 <?php
-/**
+    /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Produto[]|\Cake\Collection\CollectionInterface $produtos
  */
@@ -18,11 +18,28 @@
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Gerência de Produtos') ?></h3></a>
-        <form class="form-inline">
+        <!--<form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Digite o nome do produto" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" type="submit"></button>
         </form>
+        -->
     </nav>
+</div>
+
+<div class="container">
+    <?= $this->Form->create(null, ['url' => ['action' => 'index']]) ?>
+    <div class="row">
+
+        <div class="col-9">
+            <?php echo $this->Form->control('busca',['class'=>'form-control','label'=>'Digite o nome do produto']);?>
+        </div>
+
+        <div class="col-3">
+            <?= $this->Form->button(__(' Buscar'), ['class'=>'btn btn-success fas fa-search']) ?>
+        </div>
+
+    </div>
+    <?= $this->Form->end() ?>
 </div>
 
 <div class="container-fluid">
@@ -31,6 +48,12 @@
             <?= $this->Html->link(__(' Novo'), ['action' => 'add'], ['class' => 'nav-link btn btn-outline-success btn-sm m-1 fas fa-plus']) ?>
         </li>
     </ul>
+    <?php
+    echo $this->Paginator->counter(
+        'Página {{page}} de {{pages}}, mostrando {{current}} produtos de
+     {{count}}'
+    )
+    ?>
     <div class="shadow">
         <table class="table table-hover">
             <thead class="thead-light">

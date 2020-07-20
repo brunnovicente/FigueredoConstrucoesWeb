@@ -22,6 +22,8 @@ use Cake\ORM\Entity;
  */
 class Venda extends Entity
 {
+
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -33,7 +35,6 @@ class Venda extends Entity
      */
     protected $_accessible = [
         'total' => true,
-        'data' => true,
         'status' => true,
         'cliente_id' => true,
         'user_id' => true,
@@ -41,5 +42,7 @@ class Venda extends Entity
         'cliente' => true,
         'user' => true,
         'itens' => true,
+        'created' => true,
+        'modified' => true,
     ];
 }

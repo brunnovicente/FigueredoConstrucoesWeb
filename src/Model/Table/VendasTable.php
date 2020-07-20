@@ -45,6 +45,8 @@ class VendasTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('Clientes', [
             'foreignKey' => 'cliente_id',
             'joinType' => 'INNER',
@@ -73,10 +75,6 @@ class VendasTable extends Table
         $validator
             ->decimal('total')
             ->allowEmptyString('total');
-
-        $validator
-            ->date('data')
-            ->allowEmptyDate('data');
 
         $validator
             ->integer('status')

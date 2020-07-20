@@ -44,7 +44,7 @@ $this->Paginator->setTemplates([
                 <?php foreach ($vendas as $venda): ?>
                 <tr>
                     <td><?= $this->Number->format($venda->id) ?></td>
-                    <td><?= h($venda->data) ?></td>
+                    <td><?= h($venda->created) ?></td>
                     <td><?= $this->Number->format($venda->total) ?></td>
                     <td><?php
                         if($venda->status == 1){

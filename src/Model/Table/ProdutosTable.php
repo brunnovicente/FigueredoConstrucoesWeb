@@ -67,7 +67,7 @@ class ProdutosTable extends Table
         $validator
             ->scalar('codigoBarra')
             ->maxLength('codigoBarra', 100)
-            ->notEmptyString('codigoBarra', 'O código de barras do produto é obrigatório!')
+            ->allowEmptyString('codigoBarra')
             ->add('codigoBarra', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
