@@ -22,8 +22,9 @@ class ProdutosController extends AppController
     public function index()
     {
         $user = $this->Auth->user();
-        if ($this->request->is('post')) {
-            $data = $this->request->getData();
+        if (!empty($this->request->getQuery('busca')) && $this->request->getQuery('busca')) {
+
+            $data = $this->request->getQueryParams();
             $produtos = TableRegistry::getTableLocator()->get('produtos')->find('all');
 
             $produtos->where(['OR' => [

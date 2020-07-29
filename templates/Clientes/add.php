@@ -165,7 +165,7 @@ $UF = array(
             <?php echo $this->Form->control('email',['class'=>'form-control','label'=>'E-MAIL'])?>
         </div>
     </div>
-    <div class="row mb-2 mr-1 justify-content-end">
+    <div class="row pt-3 mb-2 mr-1 justify-content-end">
         <?= $this->Form->button(__(' Salvar'), ['class'=>'btn btn-success far fa-save']) ?>
     </div>
     <br>

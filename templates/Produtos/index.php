@@ -27,7 +27,7 @@
 </div>
 
 <div class="container">
-    <?= $this->Form->create(null, ['url' => ['action' => 'index']]) ?>
+    <?= $this->Form->create(null, ['type'=>'get']) ?>
     <div class="row">
 
         <div class="col-9">
