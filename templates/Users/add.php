@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="container-fluid">
+<div class="container">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"><h3><?= __('Cadastro de Usuários') ?></h3></a>
         <?= $this->Html->link(__(' Voltar'), ['action' => 'index'], ['class' => 'nav-link btn btn-outline-info btn-sm fas fa-angle-left']) ?>
